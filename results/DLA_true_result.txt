@@ -1,0 +1,545 @@
+PBM_MCMa_256_0.01
+ 0.74 loss 3.8414
+ndcg_5 0.7623984813690186
+best valid ndcg_5:0.7826,step 2050
+current_step:  10050
+
+PBM_MCMa_256_0.001
+ime 0.74 loss nan
+ndcg_5 0.7885794639587402
+best valid ndcg_5:0.7889,step 9800
+current_step:  10050
+
+PBM_MCMa_256_0.0001
+me 0.73 loss 3.8970
+ndcg_5 0.7218730449676514
+best valid ndcg_5:0.7757,step 50
+current_step:  10050
+
+PBM_MCMa_256_1e-05
+me 0.75 loss 3.9031
+ndcg_5 0.730525553226471
+best valid ndcg_5:0.7772,step 250
+current_step:  10050
+
+PBM_MCMa_256_1e-06
+e 0.75 loss 3.9350
+ndcg_5 0.7431895136833191
+best valid ndcg_5:0.7719,step 600
+current_step:  10050
+
+DCM_MCMa_256_0.01
+e 0.69 loss 3.8394
+ndcg_5 0.738037645816803
+best valid ndcg_5:0.7926,step 1050
+current_step:  10050
+
+DCM_MCMa_256_0.001
+ 0.69 loss 3.8660
+ndcg_5 0.7755939960479736
+best valid ndcg_5:0.7921,step 5000
+current_step:  10050
+
+DCM_MCMa_256_0.0001
+e 0.72 loss 3.8361
+ndcg_5 0.737280547618866
+best valid ndcg_5:0.7817,step 3250
+current_step:  10050
+
+DCM_MCMa_256_1e-05
+me 0.70 loss 3.8809
+ndcg_5 0.7261823415756226
+best valid ndcg_5:0.7779,step 50
+current_step:  10050
+
+DCM_MCMa_256_1e-06
+e 0.72 loss 3.8872
+ndcg_5 0.762636125087738
+best valid ndcg_5:0.7720,step 2000
+current_step:  10050
+
+UBM_MCMa_256_0.01
+ 0.70 loss 3.8632
+ndcg_5 0.7570623159408569
+best valid ndcg_5:0.7879,step 5450
+current_step:  10050
+
+PBM_DCM_256_0.1
+e 0.14 loss 2.8876
+ndcg_5 0.755756139755249
+best valid ndcg_5:0.8069,step 1000
+current_step:  10050
+
+PBM_DCM_256_0.05
+e 0.14 loss 2.7968
+ndcg_5 0.7580249905586243
+best valid ndcg_5:0.7998,step 900
+current_step:  10050
+
+PBM_DCM_256_0.01
+ 0.14 loss 2.8267
+ndcg_5 0.7731353640556335
+best valid ndcg_5:0.8012,step 2200
+current_step:  10050
+
+PBM_DCM_256_0.001
+ 0.14 loss 3.0511
+ndcg_5 0.7667192220687866
+best valid ndcg_5:0.7929,step 1800
+current_step:  10050
+
+PBM_DCM_512_0.1
+e 0.28 loss 2.8474
+ndcg_5 0.7717317342758179
+best valid ndcg_5:0.7969,step 400
+current_step:  10050
+
+PBM_DCM_512_0.05
+e 0.29 loss 2.7794
+ndcg_5 0.7743173241615295
+best valid ndcg_5:0.7939,step 700
+current_step:  10050
+
+PBM_DCM_512_0.01
+e 0.28 loss 2.8492
+ndcg_5 0.7731115221977234
+best valid ndcg_5:0.8089,step 750
+current_step:  10050
+
+PBM_DCM_512_0.001
+e 0.29 loss 3.0320
+ndcg_5 0.7684406638145447
+best valid ndcg_5:0.8048,step 150
+current_step:  10050
+
+PBM_DCM_1024_0.1
+ 0.56 loss 2.8052
+ndcg_5 0.7780405879020691
+best valid ndcg_5:0.7960,step 3100
+current_step:  10050
+
+PBM_DCM_1024_0.05
+ 0.57 loss 2.7711
+ndcg_5 0.7883033752441406
+best valid ndcg_5:0.8021,step 6000
+current_step:  10050
+
+PBM_DCM_1024_0.01
+e 0.56 loss 2.8230
+ndcg_5 0.7855578660964966
+best valid ndcg_5:0.8040,step 950
+current_step:  10050
+
+PBM_DCM_1024_0.001
+ 0.56 loss 3.0217
+ndcg_5 0.7805227637290955
+best valid ndcg_5:0.7921,step 2450
+current_step:  10050
+
+PBM_DCM_2048_0.1
+e 1.16 loss 2.7611
+ndcg_5 0.7592269778251648
+best valid ndcg_5:0.7997,step 550
+current_step:  10050
+
+PBM_DCM_2048_0.05
+e 1.16 loss 2.7858
+ndcg_5 0.7635123133659363
+best valid ndcg_5:0.8007,step 600
+current_step:  10050
+
+PBM_DCM_2048_0.01
+ 1.16 loss 2.7934
+ndcg_5 0.7787594199180603
+best valid ndcg_5:0.8060,step 3300
+current_step:  10050
+
+PBM_DCM_2048_0.001
+ 1.17 loss 3.0079
+ndcg_5 0.7738897204399109
+best valid ndcg_5:0.7934,step 9250
+current_step:  10050
+
+DCM_DCM_256_0.1
+ 0.14 loss 3.3463
+ndcg_5 0.7563977241516113
+best valid ndcg_5:0.8080,step 2500
+current_step:  10050
+
+DCM_DCM_256_0.05
+ 0.14 loss 3.3610
+ndcg_5 0.7732132077217102
+best valid ndcg_5:0.7965,step 2400
+current_step:  10050
+
+DCM_DCM_256_0.01
+e 0.14 loss 3.4398
+ndcg_5 0.7781375646591187
+best valid ndcg_5:0.8057,step 550
+current_step:  10050
+
+DCM_DCM_256_0.001
+ 0.14 loss 3.4925
+ndcg_5 0.7786227464675903
+best valid ndcg_5:0.7958,step 1200
+current_step:  10050
+
+DCM_DCM_512_0.1
+ 0.28 loss 3.4814
+ndcg_5 0.7671183943748474
+best valid ndcg_5:0.8048,step 8150
+current_step:  10050
+
+DCM_DCM_512_0.05
+ 0.28 loss 3.3630
+ndcg_5 0.7851152420043945
+best valid ndcg_5:0.8026,step 1800
+current_step:  10050
+
+DCM_DCM_512_0.01
+ 0.28 loss 3.4516
+ndcg_5 0.7742976546287537
+best valid ndcg_5:0.8108,step 3100
+current_step:  10050
+
+DCM_DCM_512_0.001
+ 0.28 loss 3.4748
+ndcg_5 0.7662665247917175
+best valid ndcg_5:0.7973,step 1250
+current_step:  10050
+
+DCM_DCM_1024_0.1
+ 0.56 loss 3.3891
+ndcg_5 0.7773292064666748
+best valid ndcg_5:0.8004,step 7250
+current_step:  10050
+
+DCM_DCM_1024_0.05
+me 0.56 loss 3.3065
+ndcg_5 0.782504141330719
+best valid ndcg_5:0.8047,step 600
+current_step:  10050
+
+DCM_DCM_1024_0.01
+ 0.56 loss 3.3916
+ndcg_5 0.7663419246673584
+best valid ndcg_5:0.8051,step 2550
+current_step:  10050
+
+DCM_DCM_1024_0.001
+ 0.55 loss 3.4803
+ndcg_5 0.7811439037322998
+best valid ndcg_5:0.7944,step 5000
+current_step:  10050
+
+DCM_DCM_2048_0.1
+e 1.12 loss 3.3517
+ndcg_5 0.7728177309036255
+best valid ndcg_5:0.7987,step 950
+current_step:  10050
+
+DCM_DCM_2048_0.05
+e 1.14 loss 3.3016
+ndcg_5 0.7715510725975037
+best valid ndcg_5:0.8023,step 800
+current_step:  10050
+
+DCM_DCM_2048_0.01
+e 1.15 loss 3.3781
+ndcg_5 0.7866598963737488
+best valid ndcg_5:0.8038,step 750
+current_step:  10050
+
+DCM_DCM_2048_0.001
+me 1.12 loss 3.4607
+ndcg_5 0.778853714466095
+best valid ndcg_5:0.8077,step 150
+current_step:  10050
+
+UBM_DCM_256_0.1
+ 0.14 loss 3.0639
+ndcg_5 0.7843438982963562
+best valid ndcg_5:0.8012,step 2200
+current_step:  10050
+
+UBM_DCM_256_0.05
+e 0.14 loss 2.8931
+ndcg_5 0.7814628481864929
+best valid ndcg_5:0.8037,step 900
+current_step:  10050
+
+UBM_DCM_256_0.01
+ 0.14 loss 3.0335
+ndcg_5 0.7885299921035767
+best valid ndcg_5:0.8051,step 3700
+current_step:  10050
+
+UBM_DCM_256_0.001
+ 0.14 loss 3.0941
+ndcg_5 0.7773707509040833
+best valid ndcg_5:0.7919,step 8650
+current_step:  10050
+
+UBM_DCM_512_0.1
+e 0.28 loss 2.9994
+ndcg_5 0.7852509021759033
+best valid ndcg_5:0.8082,step 950
+current_step:  10050
+
+UBM_DCM_512_0.05
+e 0.28 loss 2.8195
+ndcg_5 0.7835474014282227
+best valid ndcg_5:0.7969,step 950
+current_step:  10050
+
+UBM_DCM_512_0.01
+ 0.27 loss 2.9551
+ndcg_5 0.7820870876312256
+best valid ndcg_5:0.8038,step 1150
+current_step:  10050
+
+UBM_DCM_512_0.001
+e 0.28 loss 3.0977
+ndcg_5 0.7753427028656006
+best valid ndcg_5:0.7959,step 750
+current_step:  10050
+
+UBM_DCM_1024_0.1
+e 0.55 loss 2.8803
+ndcg_5 0.7686116099357605
+best valid ndcg_5:0.8026,step 550
+current_step:  10050
+
+UBM_DCM_1024_0.05
+e 0.55 loss 2.8224
+ndcg_5 0.7684354186058044
+best valid ndcg_5:0.7971,step 950
+current_step:  10050
+
+UBM_DCM_1024_0.01
+e 0.55 loss 2.9357
+ndcg_5 0.7828581929206848
+best valid ndcg_5:0.7994,step 950
+current_step:  10050
+
+UBM_DCM_1024_0.001
+e 0.55 loss 3.0740
+ndcg_5 0.777345597743988
+best valid ndcg_5:0.7955,step 2200
+current_step:  10050
+
+UBM_DCM_2048_0.1
+ 1.14 loss 2.8863
+ndcg_5 0.7821521162986755
+best valid ndcg_5:0.7965,step 1250
+current_step:  10050
+
+UBM_DCM_2048_0.05
+ 1.13 loss 2.8392
+ndcg_5 0.7713125348091125
+best valid ndcg_5:0.7948,step 6750
+current_step:  10050
+
+UBM_DCM_2048_0.01
+ 1.10 loss 2.9492
+ndcg_5 0.7758651375770569
+best valid ndcg_5:0.8054,step 1100
+current_step:  10050
+
+UBM_DCM_2048_0.001
+ 1.11 loss 3.0614
+ndcg_5 0.7781344652175903
+best valid ndcg_5:0.8011,step 7550
+current_step:  10050
+
+MCM_DCM_256_0.1
+e 0.14 loss 3.0521
+ndcg_5 0.7617032527923584
+best valid ndcg_5:0.7949,step 250
+current_step:  10050
+
+MCM_DCM_256_0.05
+e 0.14 loss 3.0626
+ndcg_5 0.7703301906585693
+best valid ndcg_5:0.7938,step 800
+current_step:  10050
+
+MCM_DCM_256_0.01
+ 0.14 loss 3.1572
+ndcg_5 0.7769949436187744
+best valid ndcg_5:0.8084,step 1250
+current_step:  10050
+
+MCM_DCM_256_0.001
+ 0.14 loss 3.2849
+ndcg_5 0.7465986013412476
+best valid ndcg_5:0.7928,step 1900
+current_step:  10050
+
+MCM_DCM_512_0.1
+e 0.28 loss 3.0643
+ndcg_5 0.768310010433197
+best valid ndcg_5:0.7870,step 1200
+current_step:  10050
+
+MCM_DCM_512_0.05
+e 0.29 loss 3.0813
+ndcg_5 0.7581695914268494
+best valid ndcg_5:0.7939,step 550
+current_step:  10050
+
+MCM_DCM_512_0.01
+ 0.28 loss 3.1516
+ndcg_5 0.7638401389122009
+best valid ndcg_5:0.7942,step 1450
+current_step:  10050
+
+MCM_DCM_512_0.001
+ 0.28 loss 3.2916
+ndcg_5 0.7748925089836121
+best valid ndcg_5:0.7968,step 2800
+current_step:  10050
+
+MCM_DCM_1024_0.1
+e 0.55 loss 3.0113
+ndcg_5 0.7656424641609192
+best valid ndcg_5:0.7915,step 800
+current_step:  10050
+
+MCM_DCM_1024_0.05
+e 0.56 loss 3.0282
+ndcg_5 0.7621423602104187
+best valid ndcg_5:0.7940,step 700
+current_step:  10050
+
+MCM_DCM_1024_0.01
+e 0.57 loss 3.1362
+ndcg_5 0.754647970199585
+best valid ndcg_5:0.7954,step 1200
+current_step:  10050
+
+MCM_DCM_1024_0.001
+me 0.55 loss 3.2568
+ndcg_5 0.783626139163971
+best valid ndcg_5:0.7892,step 150
+current_step:  10050
+
+MCM_DCM_2048_0.1
+e 1.11 loss 3.0382
+ndcg_5 0.7556973099708557
+best valid ndcg_5:0.7854,step 350
+current_step:  10050
+
+MCM_DCM_2048_0.05
+e 1.17 loss 3.0242
+ndcg_5 0.7687917947769165
+best valid ndcg_5:0.7909,step 450
+current_step:  10050
+
+MCM_DCM_2048_0.01
+ 1.19 loss 3.1271
+ndcg_5 0.7732064723968506
+best valid ndcg_5:0.7961,step 1250
+current_step:  10050
+
+MCM_DCM_2048_0.001
+e 1.14 loss 3.2368
+ndcg_5 0.7760497331619263
+best valid ndcg_5:0.7886,step 500
+current_step:  10050
+
+FUSION_DCM_256_0.1
+e 0.14 loss 3.3966
+ndcg_5 0.7479495406150818
+best valid ndcg_5:0.8060,step 750
+current_step:  10050
+
+FUSION_DCM_256_0.05
+ 0.14 loss 3.1023
+ndcg_5 0.7801696062088013
+best valid ndcg_5:0.7997,step 1050
+current_step:  10050
+
+FUSION_DCM_256_0.01
+ 0.14 loss 3.1858
+ndcg_5 0.7735134363174438
+best valid ndcg_5:0.8001,step 1450
+current_step:  10050
+
+FUSION_DCM_256_0.001
+me 0.14 loss 3.2934
+ndcg_5 0.760407030582428
+best valid ndcg_5:0.7940,step 700
+current_step:  10050
+
+FUSION_DCM_512_0.1
+me 0.28 loss 3.2862
+ndcg_5 0.79294753074646
+best valid ndcg_5:0.8005,step 3300
+current_step:  10050
+
+FUSION_DCM_512_0.05
+e 0.28 loss 3.0468
+ndcg_5 0.759699821472168
+best valid ndcg_5:0.8042,step 1150
+current_step:  10050
+
+FUSION_DCM_512_0.01
+e 0.28 loss 3.2166
+ndcg_5 0.7789514660835266
+best valid ndcg_5:0.8029,step 950
+current_step:  10050
+
+FUSION_DCM_512_0.001
+ 0.28 loss 3.2826
+ndcg_5 0.7591142654418945
+best valid ndcg_5:0.7904,step 1850
+current_step:  10050
+
+FUSION_DCM_1024_0.1
+e 0.57 loss 3.1014
+ndcg_5 0.7617045640945435
+best valid ndcg_5:0.7998,step 450
+current_step:  10050
+
+FUSION_DCM_1024_0.05
+e 0.56 loss 3.0752
+ndcg_5 0.7686113119125366
+best valid ndcg_5:0.7962,step 900
+current_step:  10050
+
+FUSION_DCM_1024_0.01
+ 0.55 loss 3.1442
+ndcg_5 0.7714210748672485
+best valid ndcg_5:0.8060,step 1350
+current_step:  10050
+
+FUSION_DCM_1024_0.001
+e 0.56 loss 3.2737
+ndcg_5 0.7753745317459106
+best valid ndcg_5:0.7955,step 350
+current_step:  10050
+
+FUSION_DCM_2048_0.1
+ 1.21 loss 3.0677
+ndcg_5 0.7793188095092773
+best valid ndcg_5:0.7962,step 1100
+current_step:  10050
+
+FUSION_DCM_2048_0.05
+e 1.20 loss 3.0703
+ndcg_5 0.773783802986145
+best valid ndcg_5:0.8029,step 1450
+current_step:  10050
+
+FUSION_DCM_2048_0.01
+e 1.19 loss 3.1357
+ndcg_5 0.7894256711006165
+best valid ndcg_5:0.8029,step 650
+current_step:  10050
+
+FUSION_DCM_2048_0.001
+rate 0.0010 step-time 1.10 loss 3.3244
+ndcg_5 0.7833901047706604
+best valid ndcg_5:0.8024,step 3000
+

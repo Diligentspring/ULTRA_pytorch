@@ -1,0 +1,20 @@
+log_PBM_256_0.1
+te 0.1000 step-time 196.63 loss 3.7732
+ndcg_5 0.714994490146637
+best valid ndcg_5:0.7854,step 27000
+
+log_PBM_256_0.05
+ate 0.0500 step-time 0.33 loss 3.9113
+ndcg_5 0.7487537264823914
+best valid ndcg_5:0.7926,step 42600
+
+log_PBM_256_0.01
+ate 0.0100 step-time 0.60 loss 3.8037
+ndcg_5 0.7390556931495667
+best valid ndcg_5:0.7954,step 56350
+
+log_PBM_256_0.001
+ate 0.0010 step-time 0.26 loss 3.1595
+ndcg_5 0.7564607262611389
+best valid ndcg_5:0.7851,step 27800
+

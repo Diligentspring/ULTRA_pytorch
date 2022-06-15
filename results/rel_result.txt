@@ -1,0 +1,24 @@
+PBM_MCM_256_0.1
+loss 2.2+
+best valid ndcg_5:0.8074,step 700
+current_step:  10050
+
+PBM_MCM_512_0.1
+best valid ndcg_5:0.8135,step 8750
+current_step:  10050
+
+DCM_MCM_256_0.01
+best valid ndcg_5:0.8084,step 7750
+current_step:  10050
+
+UBM_MCM_256_0.05
+best valid ndcg_5:0.8076,step 9300
+current_step:  10050
+
+MCM_MCM
+best valid ndcg_5:0.8121,step 500
+current_step:  10050
+
+FUSION_MCM_512_0.05
+best valid ndcg_5:0.8015,step 4600
+current_step:  10050
