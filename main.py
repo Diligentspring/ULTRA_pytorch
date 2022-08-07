@@ -20,6 +20,7 @@ import argparse
 import json
 import ultra
 import numpy as np
+import random
 
 from ultra.learning_algorithm.dla_dcm import DLA_DCM
 from ultra.learning_algorithm.dla_dcmq import DLA_DCMq
@@ -95,6 +96,23 @@ def create_model(exp_settings, data_set):
 
 
 def train(exp_settings):
+    def setup_seed(seed):
+        torch.manual_seed(seed)
+        torch.cuda.manual_seed_all(seed)
+        np.random.seed(seed)
+        random.seed(seed)
+        os.environ['PYTHONHASHSEED'] = str(seed)
+        # os.environ['CUDA_LAUNCH_BLOCKING'] = str(1)
+        os.environ['CUBLAS_WORKSPACE_CONFIG'] = ':4096:8'
+        torch.manual_seed(seed)
+        torch.cuda.manual_seed(seed)
+        torch.backends.cudnn.enabled = False
+        torch.backends.cudnn.benchmark = False
+        torch.backends.cudnn.deterministic = True
+        torch.use_deterministic_algorithms(True)
+
+    setup_seed(1)
+
     # Prepare data.
     print("Reading data in %s" % args.data_dir)
     train_set = ultra.utils.read_data(args.data_dir, args.train_data_prefix, args.click_model_dir, args.max_list_cutoff)
@@ -136,8 +154,8 @@ def train(exp_settings):
     exp_settings['ln'] = args.ln
 
     print("Creating model...")
-    model = create_model(exp_settings, train_set)
-    #model = DLA_PBM(train_set, exp_settings)
+    #model = create_model(exp_settings, train_set)
+    model = DLA_PBM(train_set, exp_settings)
     # model.print_info()
 
     # Create data feed
@@ -190,13 +208,23 @@ def train(exp_settings):
                             step_time, loss))
             previous_losses.append(loss)
 
-            # parafile = open(args.model_dir+'/para.txt', 'a')
-            # parafile.write('current_step:'+str(current_step)+'\n')
-            # for i in range(len(model.propensity_parameter)):
-            #     parafile.write(str(model.propensity_parameter[i].data)+' ')
-            #     if i%10 ==9:
-            #         parafile.write('\n')
-            # parafile.close()
+            if min(previous_losses) == loss:
+                checkpoint_path = os.path.join(args.model_dir,
+                                               "%s.ckpt" % str(exp_settings['learning_algorithm']) + str(
+                                                   model.global_step))
+                torch.save(model.model.state_dict(), checkpoint_path)
+
+                lossfile = open(args.model_dir + '/loss.txt', 'a')
+                lossfile.write('current_step:' + str(current_step) + '  loss: ' + str(loss) + '\n')
+                lossfile.close()
+
+            parafile = open(args.model_dir+'/para.txt', 'a')
+            parafile.write('current_step:'+str(current_step)+'\n')
+            for i in range(len(model.propensity_parameter)):
+                parafile.write(str(model.propensity_parameter[i].data)+' ')
+                if i%10 ==9:
+                    parafile.write('\n')
+            parafile.close()
 
             # relfile = open(args.model_dir + '/rel.txt', 'a')
             # relfile.write('current_step:' + str(current_step) + '\n')
@@ -356,8 +384,8 @@ def test(exp_settings):
 
     exp_settings['ln'] = args.ln
     # Create model and load parameters.
-    model = create_model(exp_settings, test_set)
-    #model = DLA_PBM(test_set, exp_settings)
+    #model = create_model(exp_settings, test_set)
+    model = DLA_PBM(test_set, exp_settings)
     checkpoint_path = os.path.join(args.model_dir+'_256_0.1', "%s.ckpt41750" % exp_settings['learning_algorithm'])
     ckpt = torch.load(checkpoint_path)
     print("Reading model parameters from %s" % checkpoint_path)
