@@ -130,6 +130,10 @@ class Raw_data:
             feature_fin = open(data_path + 'test/test.feature')
         elif file_prefix =='test-on-train':
             feature_fin = open(data_path + 'test-on-train/test.feature')
+        elif file_prefix =='training_valid':
+            feature_fin = open(data_path + 'training_valid/train.feature')
+        elif file_prefix =='training_test':
+            feature_fin = open(data_path + 'training_test/train.feature')
         else:
             feature_fin = open(
                 data_path +
@@ -164,6 +168,10 @@ class Raw_data:
             init_list_fin = open(data_path + 'test/test.init_list')
         elif file_prefix =='test-on-train':
             init_list_fin = open(data_path + 'test-on-train/test.init_list')
+        elif file_prefix =='training_valid':
+            init_list_fin = open(data_path + 'training_valid/training_valid.init_list')
+        elif file_prefix =='training_test':
+            init_list_fin = open(data_path + 'training_test/training_test.init_list')
         else:
             init_list_fin = open(
                 data_path +
@@ -195,7 +203,10 @@ class Raw_data:
             #label_fin = open(data_path + 'test/test.init_list')
         elif file_prefix =='test-on-train':
             label_fin = open(data_path + 'test-on-train/test.labels')
-
+        elif file_prefix =='training_valid':
+            label_fin = open(data_path + 'training_valid/training_valid.labels')
+        elif file_prefix =='training_test':
+            label_fin = open(data_path + 'training_test/training_test.labels')
         else:
             label_fin = open(
                 data_path +

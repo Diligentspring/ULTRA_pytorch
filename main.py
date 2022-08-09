@@ -38,6 +38,8 @@ parser.add_argument("--train_data_prefix", type=str, default="train", help="The 
                                                                          "in data_dir.")
 parser.add_argument("--valid_data_prefix", type=str, default="valid", help="The name prefix of the validation data in "
                                                                          "data_dir.")
+parser.add_argument("--training_valid_data_prefix", type=str, default="training_valid", help="The name prefix of the training-validation data in "
+                                                                         "data_dir.")
 parser.add_argument("--test_data_prefix", type=str, default="test", help="The name prefix of the test data in data_dir.")
 parser.add_argument("--model_dir", type=str, default="./tests/tmp_model/", help="The directory for model and "
                                                                               "intermediate outputs.")
@@ -123,6 +125,10 @@ def train(exp_settings):
     ultra.utils.find_class(exp_settings['train_input_feed']).preprocess_data(valid_set,
                                                                              exp_settings['train_input_hparams'],
                                                                              exp_settings)
+    training_valid_set = ultra.utils.read_data(args.data_dir, args.training_valid_data_prefix, args.click_model_dir, args.max_list_cutoff)
+    ultra.utils.find_class(exp_settings['train_input_feed']).preprocess_data(training_valid_set,
+                                                                             exp_settings['train_input_hparams'],
+                                                                             exp_settings)
 
     print("Train Rank list size %d" % train_set.rank_list_size)
     print("Valid Rank list size %d" % valid_set.rank_list_size)
@@ -163,6 +169,8 @@ def train(exp_settings):
                                                                                 exp_settings['train_input_hparams'])
     valid_input_feed = ultra.utils.find_class(exp_settings['valid_input_feed'])(model, args.batch_size,
                                                                                 exp_settings['valid_input_hparams'])
+    training_valid_input_feed = ultra.utils.find_class(exp_settings['valid_input_feed'])(model, args.batch_size,
+                                                                                exp_settings['valid_input_hparams'])
     test_input_feed = None
     if args.test_while_train:
         test_input_feed = ultra.utils.find_class(exp_settings['test_input_feed'])(model, args.batch_size,
@@ -172,6 +180,7 @@ def train(exp_settings):
     # Create tensorboard summarizations.
     train_writer = torch.utils.tensorboard.SummaryWriter(log_dir=args.model_dir + '/train_log')
     valid_writer = torch.utils.tensorboard.SummaryWriter(log_dir=args.model_dir + '/valid_log')
+    training_valid_writer = torch.utils.tensorboard.SummaryWriter(log_dir=args.model_dir + '/training_valid_log')
     test_writer = None
     if args.test_while_train:
         test_writer = torch.utils.tensorboard.SummaryWriter(log_dir=args.model_dir + '/test_log')
@@ -182,6 +191,10 @@ def train(exp_settings):
     previous_losses = []
     best_perf = None
     best_step = None
+    training_valid_best_perf = None
+    training_valid_best_step = None
+    best_loss = None
+    loss_best_step = None
     print("max_train_iter: ", args.max_train_iteration)
     while True:
         # Get a batch and make a step.
@@ -207,16 +220,6 @@ def train(exp_settings):
                   "%.4f" % (model.global_step, model.learning_rate,
                             step_time, loss))
             previous_losses.append(loss)
-
-            if min(previous_losses) == loss:
-                checkpoint_path = os.path.join(args.model_dir,
-                                               "%s.ckpt" % str(exp_settings['learning_algorithm']) + str(
-                                                   model.global_step))
-                torch.save(model.model.state_dict(), checkpoint_path)
-
-                lossfile = open(args.model_dir + '/loss.txt', 'a')
-                lossfile.write('current_step:' + str(current_step) + '  loss: ' + str(loss) + '\n')
-                lossfile.close()
 
             parafile = open(args.model_dir+'/para.txt', 'a')
             parafile.write('current_step:'+str(current_step)+'\n')
@@ -258,13 +261,49 @@ def train(exp_settings):
             valid_summary = validate_model(valid_set, valid_input_feed)
             valid_writer.add_scalars('Validation_Summary', valid_summary, model.global_step)
             for key,value in valid_summary.items():
-                print(key, value)
+                # print(key, value)
+                print("%s %.4f" % (key, value))
+
+            def training_validate_model(data_set, data_input_feed):
+                it = 0
+                count_batch = 0.0
+                summary_list = []
+                batch_size_list = []
+                while it < len(data_set.initial_list):
+                    input_feed, info_map = data_input_feed.get_next_batch(
+                        it, data_set, check_validation=False, data_format=args.data_format)
+                    _, _, summary = model.validation(input_feed)
+                    # summary_list.append(summary)
+                    # deep copy the summary dict
+                    summary_list.append(copy.deepcopy(summary))
+                    batch_size_list.append(len(info_map['input_list']))
+                    it += batch_size_list[-1]
+                    count_batch += 1.0
+                return ultra.utils.merge_Summary(summary_list, batch_size_list)
+
+            training_valid_summary = training_validate_model(training_valid_set, training_valid_input_feed)
+            training_valid_writer.add_scalars('Training_Validation_Summary', training_valid_summary, model.global_step)
+            for key, value in training_valid_summary.items():
+                # print(key, value)
+                print("%s %.4f" % (key, value))
+
 
             if args.test_while_train:
                 test_summary = validate_model(test_set, test_input_feed)
                 test_writer.add_scalars('Validation Summary while training', valid_summary, model.global_step)
                 for key, value in test_summary.items:
                     print(key, value)
+
+            if current_step % (5 * args.steps_per_checkpoint) == 0:
+                if best_loss == None or best_loss > loss:
+                    checkpoint_path = os.path.join(args.model_dir,
+                                                   "%s.ckpt" % str(exp_settings['learning_algorithm']) + str(
+                                                       model.global_step))
+                    torch.save(model.model.state_dict(), checkpoint_path)
+
+                    best_loss = loss
+                    loss_best_step = model.global_step
+                print('best loss:%.4f,step %d' % (best_loss, loss_best_step))
 
             # Save checkpoint if the objective metric on the validation set is better
             if "objective_metric" in exp_settings:
@@ -280,6 +319,23 @@ def train(exp_settings):
                                 print('Save model, valid %s:%.4f,step %d' % (key, best_perf, best_step))
                                 break
                             print('best valid %s:%.4f,step %d' % (key, best_perf, best_step))
+
+            # Save checkpoint if the objective metric on the training_validation set is better
+            if "objective_metric" in exp_settings:
+                for key, value in training_valid_summary.items():
+                    if key == exp_settings["objective_metric"]:
+                        if current_step >= args.start_saving_iteration:
+                            if training_valid_best_perf == None or training_valid_best_perf < value:
+                                checkpoint_path = os.path.join(args.model_dir,
+                                                               "%s.ckpt" % str(exp_settings[
+                                                                                   'learning_algorithm']) + str(
+                                                                   model.global_step))
+                                torch.save(model.model.state_dict(), checkpoint_path)
+                                training_valid_best_perf = value
+                                training_valid_best_step = model.global_step
+                                print('Save model, training_valid %s:%.4f,step %d' % (key, training_valid_best_perf, training_valid_best_step))
+                                break
+                            print('best training_valid %s:%.4f,step %d' % (key, training_valid_best_perf, training_valid_best_step))
 
             # Save checkpoint if there is no objective metric
             if best_perf == None and current_step > args.start_saving_iteration:
