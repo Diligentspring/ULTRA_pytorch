@@ -294,16 +294,16 @@ def train(exp_settings):
                 for key, value in test_summary.items:
                     print(key, value)
 
-            if current_step % (5 * args.steps_per_checkpoint) == 0:
-                if best_loss == None or best_loss > loss:
-                    checkpoint_path = os.path.join(args.model_dir,
-                                                   "%s.ckpt" % str(exp_settings['learning_algorithm']) + str(
-                                                       model.global_step))
-                    torch.save(model.model.state_dict(), checkpoint_path)
-
-                    best_loss = loss
-                    loss_best_step = model.global_step
-                print('best loss:%.4f,step %d' % (best_loss, loss_best_step))
+            # if current_step % (5 * args.steps_per_checkpoint) == 0:
+            #     if best_loss == None or best_loss > loss:
+            #         checkpoint_path = os.path.join(args.model_dir,
+            #                                        "%s.ckpt" % str(exp_settings['learning_algorithm']) + str(
+            #                                            model.global_step))
+            #         torch.save(model.model.state_dict(), checkpoint_path)
+            #
+            #         best_loss = loss
+            #         loss_best_step = model.global_step
+            #     print('best loss:%.4f,step %d' % (best_loss, loss_best_step))
 
             # Save checkpoint if the objective metric on the validation set is better
             if "objective_metric" in exp_settings:
