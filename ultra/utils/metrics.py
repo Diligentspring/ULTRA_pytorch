@@ -207,6 +207,7 @@ def _discounted_cumulative_gain(prediction, labels, weights=None, topn=None):
     list_size = labels.shape[1]
     _, indices = prediction.sort(descending=True, dim=-1)
     sorted_labels = torch.gather(labels, dim=1, index=indices)
+    # print(sorted_labels)
     sorted_weights = torch.gather(weights, dim =1, index=indices)
     discounts = (torch.tensor(1) / torch.log2(torch.arange(list_size, dtype=torch.float) + 2.0)).to(
         device=device)
@@ -218,6 +219,7 @@ def _discounted_cumulative_gain(prediction, labels, weights=None, topn=None):
     topn_tensor = torch.tensor(topn, dtype=torch.long) - torch.tensor(1)
 
     dcg = cum_dcg[:, topn_tensor]
+    # print(dcg)
     return dcg
 
 
@@ -326,7 +328,7 @@ def expected_reciprocal_rank(
     non_rel = torch.cumprod(1.0 - relevance, dim=1) / (1.0 - relevance)
     reciprocal_rank = 1.0 / \
       torch.arange(start=1, end=list_size + 1,device=device,dtype=torch.float32)
-    mask = [torch.ge(reciprocal_rank, 1.0 / (n + 1)).type(torch.float32) for n in topn]
+    mask = [torch.ge(reciprocal_rank, 1.0 / n).type(torch.float32) for n in topn]
     reciprocal_rank_topn = [reciprocal_rank * top_n_mask for top_n_mask in mask]
     # ERR has a shape of [batch_size, 1]
     err = [torch.sum(

@@ -113,7 +113,7 @@ def train(exp_settings):
         torch.backends.cudnn.deterministic = True
         torch.use_deterministic_algorithms(True)
 
-    setup_seed(1)
+    setup_seed(5)
 
     # Prepare data.
     print("Reading data in %s" % args.data_dir)
@@ -161,7 +161,7 @@ def train(exp_settings):
 
     print("Creating model...")
     #model = create_model(exp_settings, train_set)
-    model = DLA_PBM(train_set, exp_settings)
+    model = DLA_DCM(train_set, exp_settings)
     # model.print_info()
 
     # Create data feed
