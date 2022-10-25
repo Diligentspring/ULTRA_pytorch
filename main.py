@@ -30,6 +30,7 @@ from ultra.learning_algorithm.dla_pbm import DLA_PBM
 from ultra.learning_algorithm.dla_pbm_em import DLA_PBM_EM
 from ultra.learning_algorithm.dla_mcm_em import DLA_MCM_EM
 from ultra.learning_algorithm.dla_mcma import DLA_MCMa
+from ultra.learning_algorithm.prs_rank_modify import PRSrank_modify
 
 # rank list size should be read from data
 parser = argparse.ArgumentParser(description='Pipeline commandline argument')
@@ -73,6 +74,8 @@ parser.add_argument("--test_only", type=bool, default=False,
                     help="Set to True for testing models only.")
 parser.add_argument("--ln", type=float, default=0.05,
                     help="Learning rate.")
+parser.add_argument("--seed", type=int, default=1,
+                    help="random seed.")
 
 args = parser.parse_args()
 
@@ -113,7 +116,7 @@ def train(exp_settings):
         torch.backends.cudnn.deterministic = True
         torch.use_deterministic_algorithms(True)
 
-    setup_seed(5)
+    setup_seed(args.seed)
 
     # Prepare data.
     print("Reading data in %s" % args.data_dir)
@@ -158,10 +161,14 @@ def train(exp_settings):
     # Create model based on the input layer.
 
     exp_settings['ln'] = args.ln
+    exp_settings['train_data_prefix'] = args.train_data_prefix
+    exp_settings['model_dir'] = args.model_dir
 
     print("Creating model...")
-    #model = create_model(exp_settings, train_set)
-    model = DLA_DCM(train_set, exp_settings)
+    # model = create_model(exp_settings, train_set)
+    model = DLA_PBM(train_set, exp_settings)
+    # model = DLA_DCM(train_set, exp_settings)
+    # model = PRSrank_modify(train_set, exp_settings)
     # model.print_info()
 
     # Create data feed

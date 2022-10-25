@@ -264,7 +264,7 @@ class BaseAlgorithm(ABC):
         if propensity_weights is None:
             propensity_weights = torch.ones_like(labels)
 
-        label_dis = torch.minimum(labels, 1)
+        # label_dis = torch.minimum(labels, 1) 这行报错了，似乎也没有用，直接注释掉
         criterion =  torch.nn.BCEWithLogitsLoss(reduction="none")
         loss = criterion(output, labels) * propensity_weights
         return torch.mean(torch.sum(loss, dim=1))

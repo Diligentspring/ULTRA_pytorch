@@ -33,7 +33,8 @@ class NavieAlgorithm(BaseAlgorithm):
             #learning_rate=0.05,                 # Learning rate.
             learning_rate=exp_settings['ln'],
             max_gradient_norm=5.0,            # Clip gradients to this norm.
-            loss_func='softmax_cross_entropy',            # Select Loss function
+            # loss_func='softmax_cross_entropy',            # Select Loss function
+            loss_func='sigmoid_loss',
             # Set strength for L2 regularization.
             l2_loss=0.0,
             grad_strategy='ada',            # Select gradient strategy
